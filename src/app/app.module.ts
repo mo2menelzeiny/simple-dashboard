@@ -15,10 +15,10 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatToolbarModule} from '@angular/material/toolbar';
 
 import {AppRoutingModule} from './app-routing.module';
+
 import {AppComponent} from './app.component';
 import {LoginComponent} from './views/login/login.component';
 import {DashboardComponent} from './views/dashboard/dashboard.component';
-
 import {DashboardItemComponent} from './views/dashboard/dashboard-item.component';
 
 
