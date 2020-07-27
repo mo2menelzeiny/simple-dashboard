@@ -8,7 +8,7 @@ import {CustomerDto} from '../models/customer-dto';
   providedIn: 'root'
 })
 export class CustomerApiService {
-  readonly API = 'https://api.mocki.io/v1/c8198306';
+  private readonly API = 'https://api.mocki.io/v1/c8198306';
 
   constructor(private httpClient: HttpClient) {
   }
