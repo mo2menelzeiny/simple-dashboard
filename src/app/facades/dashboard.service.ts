@@ -37,10 +37,7 @@ export class DashboardService {
           })
         )
       )
-    ).subscribe(
-      value => this.dashboardState.setCustomers(value),
-      error => {}
-    );
+    ).subscribe(customer => this.dashboardState.setCustomers(customer));
   }
 
   getCustomers$(): Observable<Customer[]> {
