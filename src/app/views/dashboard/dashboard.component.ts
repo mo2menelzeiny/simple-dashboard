@@ -23,16 +23,18 @@ export class DashboardComponent implements OnInit, OnDestroy {
   constructor(public dashboard: DashboardService, private matDialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.subscription = this.dashboard.getCustomers$().pipe(
-      map(customer => {
-        this.dataSource = new MatTableDataSource<Customer>(customer);
-        this.dataSource.sort = this.matSort;
-      })
-    ).subscribe();
+    this.subscription = this.dashboard.getCustomers$()
+      .pipe(map(customers => this.setDataSource(customers)))
+      .subscribe();
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  setDataSource(customers: Customer[]): void {
+    this.dataSource = new MatTableDataSource<Customer>(customers);
+    this.dataSource.sort = this.matSort;
   }
 
   onClickRow(row: Customer, $event: any): void {
