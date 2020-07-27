@@ -18,7 +18,7 @@ describe('DashboardApiService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should successfully get customers', () => {
+  it('should perform GET and fetch customers', () => {
     const customers: CustomerDto[] = [
       {id: 1, first_name: 'test', last_name: 'test', email: 'test@test.com', country: 'test', avatar: 'test'}
     ];
