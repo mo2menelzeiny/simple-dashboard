@@ -7,7 +7,6 @@ import {Customer} from '../models/customer';
   providedIn: 'root'
 })
 export class DashboardStateService {
-
   private customers$ = new BehaviorSubject<Customer[]>(null);
 
   constructor() { }

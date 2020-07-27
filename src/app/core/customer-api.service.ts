@@ -14,6 +14,6 @@ export class CustomerApiService {
   }
 
   loadCustomers(): Observable<CustomerDto[]> {
-    return this.httpClient.get<any>(this.API);
+    return this.httpClient.get<CustomerDto[]>(this.API);
   }
 }
