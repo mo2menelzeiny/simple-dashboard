@@ -46,7 +46,6 @@ describe('AuthService', () => {
 
   it('should login successfully and navigate to dashboard', () => {
     service.login({email: '', password: ''});
-    console.log(mockRouter.navigate.calls.count());
     expect(mockRouter.navigate.calls.count()).toBeGreaterThanOrEqual(1);
     expect(mockRouter.navigate.calls.first().args[0][0]).toEqual('/dashboard');
   });
