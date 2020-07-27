@@ -2,6 +2,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {ReactiveFormsModule} from '@angular/forms';
 import {Router} from '@angular/router';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
@@ -14,7 +15,7 @@ describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
 
-  const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
+  const mockRouter = jasmine.createSpyObj('Router', ['navigate']);
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -26,7 +27,7 @@ describe('LoginComponent', () => {
         MatInputModule,
         MatButtonModule],
       declarations: [LoginComponent],
-      providers: [{provide: Router, useValue: routerSpy}]
+      providers: [{provide: Router, useValue: mockRouter}]
     })
       .compileComponents();
   }));
@@ -45,12 +46,10 @@ describe('LoginComponent', () => {
     const username = 'test';
     const password = 'test';
     component.formGroup.setValue({username, password});
-
     const button = fixture.debugElement.query(By.css('button')).nativeElement;
     button.click();
-
     const expectedPath = '/dashboard';
-    const actualPath = routerSpy.navigate.calls.first().args[0][0];
+    const actualPath = mockRouter.navigate.calls.first().args[0][0];
     expect(actualPath).toEqual(expectedPath);
   });
 });
