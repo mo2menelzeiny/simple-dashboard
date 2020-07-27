@@ -19,7 +19,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
-import {DashboardItemComponent} from './views/dashboard-item/dashboard-item.component';
+import {DashboardItemComponent} from './views/dashboard/dashboard-item.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 
 

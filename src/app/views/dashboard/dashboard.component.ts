@@ -7,7 +7,7 @@ import {MatSort} from '@angular/material/sort';
 import {DashboardService} from '../../facades/dashboard.service';
 import {Customer} from '../../models/customer';
 import {MatDialog} from '@angular/material/dialog';
-import {DashboardItemComponent} from '../dashboard-item/dashboard-item.component';
+import {DashboardItemComponent} from './dashboard-item.component';
 
 @Component({
   selector: 'app-dashboard',
