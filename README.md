@@ -1,6 +1,6 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/07620dfc-68c0-4840-b069-996c072a6dd2/deploy-status)](https://app.netlify.com/sites/mo2menelzeiny-simple-dashboard/deploys)
 
-# SimpleDashboard
+# Simple Dashboard
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.4.
 
