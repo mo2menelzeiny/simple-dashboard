@@ -1,7 +1,9 @@
+.container {
+  padding: 35px;
+}
+
 table {
-  width: 96%;
-  margin-left: 25px;
-  margin-top: 25px;
+  width: 100%;
 }
 
 img {
@@ -15,6 +17,6 @@ img:hover {
   box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
 }
 
-.example-spacer {
+.spacer {
   flex: 1 1 auto;
 }

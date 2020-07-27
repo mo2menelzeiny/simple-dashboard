@@ -1,5 +1,6 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {map} from 'rxjs/operators';
+import {Subscription} from 'rxjs';
 
 import {MatTableDataSource} from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
@@ -14,19 +15,24 @@ import {DashboardItemComponent} from './dashboard-item.component';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
   @ViewChild(MatSort) matSort: MatSort;
   dataSource: MatTableDataSource<Customer>;
+  subscription: Subscription;
 
   constructor(public dashboard: DashboardService, private matDialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.dashboard.getCustomers$().pipe(
-      map((customer => {
+    this.subscription = this.dashboard.getCustomers$().pipe(
+      map(customer => {
         this.dataSource = new MatTableDataSource<Customer>(customer);
         this.dataSource.sort = this.matSort;
-      }))
+      })
     ).subscribe();
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   onClickRow(row: Customer, $event: any): void {
