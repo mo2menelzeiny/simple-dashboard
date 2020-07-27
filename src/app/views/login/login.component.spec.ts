@@ -1,7 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {ReactiveFormsModule} from '@angular/forms';
-import {Router} from '@angular/router';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {By} from '@angular/platform-browser';
 
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -9,13 +9,13 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 
 import {LoginComponent} from './login.component';
-import {By} from '@angular/platform-browser';
+import {AuthService} from '../../facades/auth.service';
+import {LoginForm} from '../../models/login-form';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
-
-  const mockRouter = jasmine.createSpyObj('Router', ['navigate']);
+  const mockAuth = jasmine.createSpyObj('AuthService', ['login', 'hasFailed$']);
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -27,7 +27,7 @@ describe('LoginComponent', () => {
         MatInputModule,
         MatButtonModule],
       declarations: [LoginComponent],
-      providers: [{provide: Router, useValue: mockRouter}]
+      providers: [{provide: AuthService, useValue: mockAuth}]
     })
       .compileComponents();
   }));
@@ -42,14 +42,11 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should navigate to dashboard after successful login', () => {
-    const username = 'test';
-    const password = 'test';
-    component.formGroup.setValue({username, password});
-    const button = fixture.debugElement.query(By.css('button')).nativeElement;
-    button.click();
-    const expectedPath = '/dashboard';
-    const actualPath = mockRouter.navigate.calls.first().args[0][0];
-    expect(actualPath).toEqual(expectedPath);
+  it('should login on submit button click', () => {
+    const loginForm: LoginForm = {email: 'test@test.com', password: 'test'};
+    component.formGroup.setValue(loginForm);
+    fixture.debugElement.query(By.css('button')).nativeElement.click();
+    expect(mockAuth.login.calls.count()).toEqual(1);
+    expect(mockAuth.login.calls.first().args[0]).toEqual(loginForm);
   });
 });

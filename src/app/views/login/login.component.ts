@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  async onSubmit(): Promise<void> {
+  onSubmit(): void {
     if (this.formGroup.valid) {
       const loginForm: LoginForm = this.formGroup.getRawValue();
       this.auth.login(loginForm);
