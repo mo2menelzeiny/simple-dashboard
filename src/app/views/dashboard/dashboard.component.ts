@@ -29,7 +29,7 @@ export class DashboardComponent implements OnInit {
     ).subscribe();
   }
 
-  onClickRow(row: Customer): void {
+  onClickRow(row: Customer, $event: any): void {
     this.matDialog.open(DashboardItemComponent, {data: row, minWidth: 400});
   }
 }
