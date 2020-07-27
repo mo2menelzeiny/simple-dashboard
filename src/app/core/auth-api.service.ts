@@ -3,18 +3,18 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
 import {LoginForm} from '../models/login-form';
-import {LoginDao} from '../models/loginDao';
+import {LoginDto} from '../models/login-dto';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthApiService {
-  readonly API = '/api/login';
+  readonly API = 'https://reqres.in/api/login';
 
   constructor(private httpClient: HttpClient) {
   }
 
-  login(form: LoginForm): Observable<LoginDao> {
-    return this.httpClient.post<LoginDao>(this.API, form);
+  login(form: LoginForm): Observable<LoginDto> {
+    return this.httpClient.post<LoginDto>(this.API, form);
   }
 }
