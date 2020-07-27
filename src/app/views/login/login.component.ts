@@ -15,6 +15,10 @@ export class LoginComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, public auth: AuthService) { }
 
   async ngOnInit(): Promise<void> {
+    this.initForms();
+  }
+
+  initForms(): void {
     this.formGroup = this.formBuilder.group({
       email: ['', Validators.email],
       password: ['', Validators.required]
@@ -23,7 +27,8 @@ export class LoginComponent implements OnInit {
 
   async onSubmit(): Promise<void> {
     if (this.formGroup.valid) {
-      this.auth.login(this.formGroup.getRawValue() as LoginForm);
+      const loginForm: LoginForm = this.formGroup.getRawValue();
+      this.auth.login(loginForm);
     }
   }
 }

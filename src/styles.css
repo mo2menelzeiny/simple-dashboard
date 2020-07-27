@@ -2,7 +2,6 @@
 
 html, body {
   height: 100%;
-  /*background-color: #b0bec5;*/
 }
 
 body {
@@ -11,8 +10,8 @@ body {
 }
 
 html {
-  /*height: 100%;*/
-  background-image: url("assets/cool-background-velvet.svg");
+  background-color: #b0bec5;
+  background-image: url("./assets/cool-background-velvet.svg");
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover;
