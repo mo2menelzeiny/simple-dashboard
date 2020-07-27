@@ -1,0 +1,32 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      Login
+    </mat-card-title>
+    <mat-card-subtitle>
+      <span *ngIf="!(auth.hasFailed$() | async)">Login using your credentials</span>
+      <mat-error *ngIf="auth.hasFailed$() | async">
+        The email or password were not recognised
+      </mat-error>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="formGroup" id="loginForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="standard">
+        <input matInput placeholder="Email" formControlName="email" required>
+        <mat-error>
+          Please provide a valid username
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="standard">
+        <input matInput type="password" placeholder="Password" formControlName="password" required>
+        <mat-error>
+          Please provide a valid password
+        </mat-error>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" form="loginForm" type="submit">Login</button>
+  </mat-card-actions>
+</mat-card>
