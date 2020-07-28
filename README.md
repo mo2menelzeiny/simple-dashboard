@@ -1,8 +1,10 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/07620dfc-68c0-4840-b069-996c072a6dd2/deploy-status)](https://app.netlify.com/sites/mo2menelzeiny-simple-dashboard/deploys)
 
 # Simple Dashboard
-
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.4.
+
+## Test credentials
+To login to the demo data use this email: eve.holt@reqres.in and password: 2020 
 
 ## Development server
 
